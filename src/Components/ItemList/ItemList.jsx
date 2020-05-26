@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Servisec from '../../servisec/servis';
-import { getPerson } from '../../action/swappi';
+import { getPersons } from '../../action/swappi';
 import { NavLink } from 'react-router-dom';
 
 import {
@@ -51,7 +51,7 @@ class ItemList extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPersons: (id) => dispatch(getPerson(id)),
+    getPersons: (id) => dispatch(getPersons(id)),
   };
 };
 export default connect(null, mapDispatchToProps)(ItemList);

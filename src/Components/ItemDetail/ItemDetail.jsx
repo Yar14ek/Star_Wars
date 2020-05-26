@@ -2,15 +2,40 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { buttonStyle, ItemBlock, Text, TextContent } from './item_Detail';
+import Loader from '../Loader/Loader';
 
 class ItemDetails extends Component {
+  state = {
+    loader: false,
+  };
   componentDidUpdate(prevState) {
     if (this.props.person !== prevState.person) {
-      console.log(this.props.person);
+      this.updateLoader();
     }
   }
 
+  shipsRender = (arr) => {
+    if (!arr.length) {
+      return <span>Dont have:(</span>;
+    }
+    return arr.map((el, i) => {
+      return <TextContent key={i}>{`${el.name}, `} </TextContent>;
+    });
+  };
+  updateLoader = () => {
+    this.setState({
+      loader: true,
+    });
+  };
+
   render() {
+    if (!this.state.loader) {
+      return (
+        <ItemBlock>
+          <Loader />
+        </ItemBlock>
+      );
+    }
     const {
       birth_year,
       eye_color,
@@ -18,11 +43,7 @@ class ItemDetails extends Component {
       name,
       starships,
     } = this.props.person;
-    const shipsOpen = (ships) => {
-      return ships.map((el, i) => {
-        return <Text key={i}>{el}</Text>;
-      });
-    };
+
     return (
       <ItemBlock>
         <Link to="/" style={buttonStyle}>
@@ -37,10 +58,12 @@ class ItemDetails extends Component {
         <Text>
           Color eye: <TextContent>{eye_color}</TextContent>
         </Text>
-        <Text>
-          Home: <TextContent>{homeworld}</TextContent>
-        </Text>
-        {starships ? shipsOpen(starships) : null}
+        {homeworld ? (
+          <Text>
+            Home Planet: <TextContent>{homeworld.name}</TextContent>
+          </Text>
+        ) : null}
+        {starships ? <Text>Ship(s): {this.shipsRender(starships)}</Text> : null}
       </ItemBlock>
     );
   }

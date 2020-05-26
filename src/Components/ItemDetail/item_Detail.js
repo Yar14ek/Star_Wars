@@ -38,4 +38,5 @@ export const TextContent = styled.span`
   color: white;
   font-size: 25px;
   font-weight: bold;
+  padding-left: 5px;
 `;
