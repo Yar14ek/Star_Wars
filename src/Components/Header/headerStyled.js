@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const HeaderBlock = styled.div`
   display: flex;
@@ -24,9 +25,9 @@ export const HeaderMenu = styled.ul`
 `;
 
 export const MenuItem = styled.li`
-  padding: 20px 10px;
   border-bottom: 2px solid #000;
   border-top: 1px solid #000;
+  padding: 20px 10px;
 
   cursor: pointer;
   font-size: 20px;
@@ -36,4 +37,9 @@ export const MenuItem = styled.li`
     border-bottom: 2px solid #46ff00;
     border-top: 1px solid #46ff00;
   }
+`;
+
+export const ItemLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
 `;

@@ -20,9 +20,11 @@ export default class Servisec {
   // спиок людей
   _getAllPeople = async (page = 1) => {
     const people = await this.getResourse(`people/?page=${page}`);
+    const next = people.next ? people.next.match(/[0-9]/)[0] : false;
+    const prev = people.previous ? people.previous.match(/[0-9]/)[0] : false;
     return {
-      next_Page: people.next,
-      prev_Page: people.previous,
+      next_Page: next,
+      prev_Page: prev,
       people_List: people.results,
     };
   };

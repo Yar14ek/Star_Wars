@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+
 import {
   HeaderBlock,
   HeaderTitle,
   HeaderMenu,
   MenuItem,
+  ItemLink,
 } from './headerStyled.js';
 
 class Header extends Component {
@@ -12,7 +14,9 @@ class Header extends Component {
       <HeaderBlock>
         <HeaderTitle>Star Wars</HeaderTitle>
         <HeaderMenu>
-          <MenuItem>People</MenuItem>
+          <MenuItem>
+            <ItemLink to="/people">People</ItemLink>
+          </MenuItem>
           <MenuItem>Planet</MenuItem>
           <MenuItem>Ship</MenuItem>
         </HeaderMenu>
