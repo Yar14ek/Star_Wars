@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { buttonStyle, ItemBlock, Text, TextContent } from './item_Detail';
+// import { Link } from 'react-router-dom';
+import { ButtonBack, ItemBlock, Text, TextContent } from './styleItemDetail';
 import Loader from '../Loader/Loader';
 
 class ItemDetails extends Component {
@@ -46,9 +46,7 @@ class ItemDetails extends Component {
 
     return (
       <ItemBlock>
-        <Link to="/" style={buttonStyle}>
-          Back
-        </Link>
+        <ButtonBack to="/people">Back</ButtonBack>
         <Text>
           Name: <TextContent>{name}</TextContent>
         </Text>

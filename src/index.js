@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import 'reset-css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import store from './store';
 import App from './components/App/App';
 

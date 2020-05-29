@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const buttonStyle = {
-  position: 'absolute',
-  textDecoration: 'none',
-  right: '-50px',
-  color: 'white',
-  textTransform: 'uppercase',
-};
+export const ButtonBack = styled(Link)`
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  position: absolute;
+  right: -50px;
+`;
 export const ItemBlock = styled.div`
   font-family: sans-serif;
   margin: 0 auto;

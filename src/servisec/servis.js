@@ -11,31 +11,40 @@ export default class Servisec {
     return result.json();
   };
 
-  // из url вынимаеь id
+  // из url вынимаю id
   _getId = (url) => {
     const idRegexp = /\/([0-9]*)\/$/;
     return url.match(idRegexp)[1];
   };
+  _getPage = (next_page, prev_page) => {
+    const next = next_page ? next_page.match(/[0-9]/)[0] : false;
+    const prev = prev_page ? prev_page.match(/[0-9]/)[0] : false;
+    return { next, prev };
+  };
 
-  // спиок людей
-  _getAllPeople = async (page = 1) => {
-    const people = await this.getResourse(`people/?page=${page}`);
-    const next = people.next ? people.next.match(/[0-9]/)[0] : false;
-    const prev = people.previous ? people.previous.match(/[0-9]/)[0] : false;
-    return {
-      next_Page: next,
-      prev_Page: prev,
-      people_List: people.results,
-    };
+  // спиок всех элементов
+  _getAllItems = async ({ root, page }) => {
+    try {
+      const items = await this.getResourse(`${root}/?page=${page}`);
+      const { next, prev } = this._getPage(items.next, items.previous);
+      return {
+        next_Page: next,
+        prev_Page: prev,
+        item_List: items.results,
+      };
+    } catch (error) {
+      throw new Error(error);
+    }
   };
 
   //получаем данные одного человека
   _getPerson = async (id) => {
-    //try
-    const person = await this.getResourse(`people/${id}/`);
-    return await this._transformPerson(person);
-
-    //catch
+    try {
+      const person = await this.getResourse(`people/${id}/`);
+      return await this._transformPerson(person);
+    } catch (error) {
+      throw new Error(error);
+    }
   };
 
   _transformPerson = async (person) => {
@@ -50,17 +59,25 @@ export default class Servisec {
     };
   };
 
-  //получаем данные одного корабля
+  //получаем данные масива кораблей
   _getStarShip = async (arr) => {
-    let promises = arr.map((el) => {
-      const id = this._getId(el);
-      return this.getResourse(`starships/${id}/`);
-    });
-    return Promise.all(promises);
+    try {
+      let promises = arr.map((el) => {
+        const id = this._getId(el);
+        return this.getResourse(`starships/${id}/`);
+      });
+      return Promise.all(promises);
+    } catch (error) {
+      throw new Error(error);
+    }
   };
 
   //получаем данные одной планеты
   _getPlanet = async (url) => {
-    return await this.getResourse(`planets/${this._getId(url)}`);
+    try {
+      return await this.getResourse(`planets/${this._getId(url)}`);
+    } catch (error) {
+      throw new Error(error);
+    }
   };
 }
