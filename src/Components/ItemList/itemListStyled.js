@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const linkStyle = {
-  textDecoration: 'none',
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
-};
+export const LinkStyle = styled(Link)`
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
 
 export const List = styled.ul`
   margin-top: 30px;
@@ -36,22 +37,22 @@ export const ListItem = styled.li`
   }
 `;
 
-export const ItemName = styled.span`
-  color: #cbd9c6;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  overflow: hidden;
-`;
+// export const ItemName = styled.span`
+//   color: #cbd9c6;
+//   font-family: sans-serif;
+//   font-size: 16px;
+//   font-weight: bold;
+//   overflow: hidden;
+// `;
 
-export const ItemText = styled.p`
-  color: white;
-  padding-left: 6px;
-  font-family: sans-serif;
-  font-size: 14px;
-`;
-export const ItemSpan = styled(ItemName)`
-  color: #acea96;
-  font-size: 14px;
-  font-weight: normal;
-`;
+// export const ItemText = styled.p`
+//   color: white;
+//   padding-left: 6px;
+//   font-family: sans-serif;
+//   font-size: 14px;
+// `;
+// export const ItemSpan = styled(ItemName)`
+//   color: #acea96;
+//   font-size: 14px;
+//   font-weight: normal;
+// `;
