@@ -20,13 +20,13 @@ class View extends Component {
     switch (oriented) {
       case 'next':
         this.props.updateItemleList({
-          root: 'people',
+          root: this.props.root,
           page: this.props.next_Page,
         });
         break;
       case 'prev':
         this.props.updateItemleList({
-          root: 'people',
+          root: this.props.root,
           page: this.props.prev_Page,
         });
         break;
@@ -71,6 +71,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+  // console.log('this.props :>> ', this.props);
   return {
     updateItemleList: ({ page, root }) => dispatch(getAllItems({ page, root })),
     getPersons: (id) => dispatch(getPersons(id)),

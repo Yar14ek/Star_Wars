@@ -15,10 +15,14 @@ class Header extends Component {
         <HeaderTitle>Star Wars</HeaderTitle>
         <HeaderMenu>
           <MenuItem>
-            <ItemLink to="/people">People</ItemLink>
+            <ItemLink to="/people">Peoples</ItemLink>
           </MenuItem>
-          <MenuItem>Planet</MenuItem>
-          <MenuItem>Ship</MenuItem>
+          <MenuItem>
+            <ItemLink to="/ships">Ships</ItemLink>
+          </MenuItem>
+          <MenuItem>
+            <ItemLink to="/planets">Planets</ItemLink>
+          </MenuItem>
         </HeaderMenu>
       </HeaderBlock>
     );
