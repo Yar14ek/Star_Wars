@@ -1,8 +1,14 @@
 import React from 'react';
 import { ButtonWrap, Buttons, PageNum } from './styleNawBtn.js';
 
-const NawBtn = (props) => {
-  const { changePage, next, prev, page } = props;
+type NawBtnProps = {
+  changePage: (arg: string) => void;
+  next: number | null;
+  prev: number | null;
+  page: number;
+};
+
+const NawBtn: React.SFC<NawBtnProps> = ({ changePage, next, prev, page }) => {
   return (
     <ButtonWrap>
       <Buttons

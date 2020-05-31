@@ -3,22 +3,27 @@ import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import { ButtonBack, ItemBlock, Text, TextContent } from './styleItemDetail';
 import Loader from '../Loader/Loader';
+import { InitialStateType, PersonType } from '../../reducers/tasckReduser';
 
-class ItemDetails extends Component {
+interface ItemDetailProps {
+  person: PersonType;
+}
+
+class ItemDetails extends Component<ItemDetailProps> {
   state = {
     loader: false,
   };
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevState: ItemDetailProps) {
     if (this.props.person !== prevState.person) {
       this.updateLoader();
     }
   }
 
-  shipsRender = (arr) => {
+  shipsRender = (arr: Array<object>) => {
     if (!arr.length) {
       return <span>Dont have:(</span>;
     }
-    return arr.map((el, i) => {
+    return arr.map((el: any, i: number) => {
       return <TextContent key={i}>{`${el.name}, `} </TextContent>;
     });
   };
@@ -66,8 +71,12 @@ class ItemDetails extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  const { person } = state.tasckReduser;
+
+type TasReduserType = {
+  tasckReduser: InitialStateType;
+};
+const mapStateToProps = (state: TasReduserType) => {
+  const person: any = state.tasckReduser.person; // fix this Types!!!!!
   return {
     person,
   };

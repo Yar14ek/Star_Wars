@@ -5,8 +5,13 @@ export const GET_PERSONS = 'GET_PERSONS';
 
 const servisec = new Servisec();
 
-export function getAllItems({ root, page = 1 }) {
-  return async (dispatch) => {
+type ParamType = {
+  root: string;
+  page: number;
+};
+
+export function getAllItems({ root, page = 1 }: ParamType): object {
+  return async (dispatch: any) => {
     await servisec
       ._getAllItems({ root, page })
       .then((res) => {
@@ -19,8 +24,8 @@ export function getAllItems({ root, page = 1 }) {
   };
 }
 
-export function getPersons(id) {
-  return async (dispatch) => {
+export function getPersons(id: number): object {
+  return async (dispatch: any) => {
     await servisec
       ._getPerson(id)
       .then((res) => {

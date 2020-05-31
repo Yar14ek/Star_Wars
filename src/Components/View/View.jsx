@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import NawBtn from '../NawBtn/NawBtn';
 import ItemList from '../ItemList/ItemList';
 
-import { getAllItems, getPersons } from '../../action/swappi';
+import { getAllItems, getPersons } from '../../action/swappi.ts';
 
 import { Content } from './stuleView';
 class View extends Component {
